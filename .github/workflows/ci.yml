@@ -1,0 +1,27 @@
+name: Test Nx PPA Installation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test-nx-ppa:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Add Nx PPA repository
+      run: |
+        sudo add-apt-repository ppa:nrwl/nx
+        sudo apt update
+    
+    - name: Install Nx
+      run: sudo apt install -y nx
+    
+    - name: Test Nx installation
+      run: nx --version
