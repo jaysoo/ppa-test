@@ -23,5 +23,10 @@ jobs:
     - name: Install Nx
       run: sudo apt install -y nx
     
+    - name: Node.js and NPM versions
+      run: |
+        node --version
+        npm --version
+    
     - name: Test Nx installation
       run: nx --version
